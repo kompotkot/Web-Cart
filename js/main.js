@@ -47,3 +47,25 @@ class ProductItem {
 }
 
 const list = new ProductList();
+
+// Cart and Cart elements
+
+class Cart {
+    constructor(product){
+        this.product = product;
+        this.items = [];
+        this.totalPrice = 0;            // Отображает суммарную стоимость товаров
+    }
+    addProduct(product){
+    }
+    removeItem(item){
+    }
+    totalCalc(){                        // Добавляем в TotalPrice стоимость
+        for(let item of this.items) {
+            this.totalPrice += ProductItem(item).price;
+        }
+    }
+    mounted(){          // Показывать или скрывать корзину
+    }
+
+}
