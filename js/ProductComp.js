@@ -3,22 +3,22 @@ Vue.component('products', {
         return {
             catalogUrl: '/catalogData.json',
             products: [],
-            filtered: [],
+            // filtered: [],    // Вынесено в отдельный компонент
             imgCatalog: 'https://placehold.it/200x150',
         }
     },
-    methods: {
-        filter(){
-            let regexp = new RegExp(this.userSearch, 'i');
-            this.filtered = this.products.filter(el => regexp.test(el.product_name));
-        }
-    },
+    // methods: {               // Вынесено в отдельный компонент
+    //     filter(){
+    //         let regexp = new RegExp(this.userSearch, 'i');
+    //         this.filtered = this.products.filter(el => regexp.test(el.product_name));
+    //     }
+    // },
     mounted(){
         this.$parent.getJson(`${API + this.catalogUrl}`)
             .then(data => {
                 for(let el of data){
                     this.products.push(el);
-                    this.filtered.push(el);
+                    // this.filtered.push(el);      // Вынесено в отдельный компонент
                 }
             });
         // this.$parent.getJson(`getProducts.json`)
@@ -31,7 +31,7 @@ Vue.component('products', {
     },
     template: `
         <div class="products">
-            <product ref="refref" v-for="item of filtered" :key="item.id_product" :img="imgCatalog" :product="item"></product>
+            <product ref="refref" v-for="item of $root.$refs.search.filtered" :key="item.id_product" :img="imgCatalog" :product="item"></product>
         </div>
     `
 });
