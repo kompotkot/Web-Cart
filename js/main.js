@@ -5,12 +5,15 @@ const app = new Vue({
     // data: {
         // userSearch: '',      // Вынесено в отдельный компонент
     // },
+
     methods: {
         getJson(url){
             return fetch(url)
                 .then(result => result.json())
                 .catch(error => {
-                    console.log(error);
+                    this.$root.$refs.error.errorMsg = error;
+                    this.$root.$refs.error.showError = true;
+                    console.log(this.errorMsg);
                 })
         },
     },
