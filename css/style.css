@@ -164,3 +164,7 @@ img {
     border: none;
     border-bottom: 2px solid #fafafa;
 }
+.error{
+    position: relative;
+    display: inline-block;
+}
