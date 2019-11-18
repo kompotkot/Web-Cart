@@ -7,8 +7,19 @@ const change = (cart, req) => {
   find.quantity += req.body.quantity;
   return JSON.stringify(cart, null, 4);
 };
+// Удаление товара из корзины
+const del = (cart, req) => {
+  const find = cart.contents.find(el => el.id_product === +req.params.id);
+  if (find.quantity > 0){
+    find.quantity -= req.body.quantity;
+  } else {
+    cart.contents.splice(cart.contents.indexOf(find), 1);
+  }
+  return JSON.stringify(cart, null, 4);
+};
 
 module.exports = {
   add,
   change,
+  del,
 };

@@ -1,10 +1,11 @@
+// Запустить сервер: node ./server/server.js
 const express = require('express');
 const fs = require('fs');
 const cartRouter = require('./cartRouter');
 const app = express();
 
 app.use(express.json());
-app.use('/', express.static('./public'));
+app.use('/', express.static('./public'));   // Откуда брать статичные файлы
 app.use('/api/cart', cartRouter);
 app.get('/api/products', (req, res) => {
   fs.readFile('./server/db/products.json', 'utf-8', (err, data) => {

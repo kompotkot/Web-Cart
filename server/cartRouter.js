@@ -21,5 +21,9 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
   handler(req, res, 'change', './server/db/userCart.json');
 });
+// Удаление товара из корзины
+router.del('/:id', (req, res) => {
+  handler(req, res, 'del', './server/db/userCart.json');
+});
 
 module.exports = router;

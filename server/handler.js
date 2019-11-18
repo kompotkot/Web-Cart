@@ -4,6 +4,7 @@ const cart = require('./cart');
 const actions = {
   add: cart.add,
   change: cart.change,
+  del: cart.del,  // Удаление товара из корзины
 };
 
 const handler = (req, res, action, file) => {

@@ -2,19 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a85a9160-1594-4500-b94e-d696076c4706" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/css/normalize.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/normalize.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index-nocomp.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index-nocomp.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index-purejs.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index-purejs.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/CartComp.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/CartComp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/ErrorComp.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/ErrorComp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/ProductComp.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/ProductComp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/SearchComp.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/SearchComp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/main-nocomp.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/main-nocomp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/main-purejs.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/main-purejs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/temp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/CartComp.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/CartComp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/ProductComp.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/ProductComp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/cartRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/cartRouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/handler.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/handler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,6 +46,12 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\22p\Documents\GitHub\Web-Cart\public" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -81,7 +84,8 @@
       <workItem from="1573069489829" duration="3327000" />
       <workItem from="1573115233643" duration="2443000" />
       <workItem from="1573390698254" duration="10045000" />
-      <workItem from="1574070079143" duration="263000" />
+      <workItem from="1574070079143" duration="908000" />
+      <workItem from="1574071007120" duration="7126000" />
     </task>
     <servers />
   </component>
