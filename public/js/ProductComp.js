@@ -3,35 +3,28 @@ Vue.component('products', {
         return {
             catalogUrl: '/catalogData.json',
             products: [],
-            // filtered: [],    // Вынесено в отдельный компонент
+            filtered: [],
             imgCatalog: 'https://placehold.it/200x150',
         }
     },
-    // methods: {               // Вынесено в отдельный компонент
-    //     filter(){
-    //         let regexp = new RegExp(this.userSearch, 'i');
-    //         this.filtered = this.products.filter(el => regexp.test(el.product_name));
-    //     }
-    // },
+    methods: {
+        filter(value){
+            let regexp = new RegExp(value, 'i');
+            this.filtered = this.products.filter(el => regexp.test(el.product_name));
+        }
+    },
     mounted(){
         this.$parent.getJson(`${API + this.catalogUrl}`)
             .then(data => {
                 for(let el of data){
                     this.products.push(el);
-                    // this.filtered.push(el);      // Вынесено в отдельный компонент
+                    this.filtered.push(el);
                 }
             });
-        // this.$parent.getJson(`getProducts.json`)
-        //     .then(data => {
-        //         for(let el of data){
-        //             this.products.push(el);
-        //             this.filtered.push(el);
-        //         }
-        //     })
     },
     template: `
         <div class="products">
-            <product ref="refref" v-for="item of $root.$refs.search.filtered" :key="item.id_product" :img="imgCatalog" :product="item"></product>
+            <product ref="refref" v-for="item of filtered" :key="item.id_product" :img="imgCatalog" :product="item"></product>
         </div>
     `
 });
@@ -44,7 +37,7 @@ Vue.component('product', {
              * то мы легко можем получить доступ к ним используя свойство $root.
              * $parent можно использовать для доступа к родительскому экземпляру из дочернего.
              */
-            cartAPI: this.$root.$refs.cart, // добираемся до компонента корзины, чтобы далее использовать метод добавления
+            cartAPI: this.$root.$refs.cart,
         };
     },
 
