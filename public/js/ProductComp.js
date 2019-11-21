@@ -1,7 +1,6 @@
 Vue.component('products', {
     data(){
         return {
-            catalogUrl: '/api/products',
             products: [],
             filtered: [],
             imgCatalog: 'https://placehold.it/200x150',
@@ -14,7 +13,7 @@ Vue.component('products', {
         }
     },
     mounted(){
-        this.$parent.getJson(`${API + this.catalogUrl}`)
+        this.$parent.getJson('/api/products')
             .then(data => {
                 for(let el of data){
                     this.products.push(el);

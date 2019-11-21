@@ -5,8 +5,9 @@ const cartRouter = require('./cartRouter');
 const app = express();
 
 app.use(express.json());
-app.use('/', express.static('./public'));   // Откуда брать статичные файлы
+app.use('/', express.static('./public'));
 app.use('/api/cart', cartRouter);
+
 app.get('/api/products', (req, res) => {
   fs.readFile('./server/db/products.json', 'utf-8', (err, data) => {
     if (err) {
@@ -19,13 +20,6 @@ app.get('/api/products', (req, res) => {
 });
 
 const port = process.env.PORT || 3000;
-
 app.listen(port, () => {
   console.log(`Listening ${port} port`);
 });
-
-// CRUD
-// app.post(); // CREATE
-// app.get(); // READ
-// app.put(); // UPDATE
-// app.delete(); // DELETE

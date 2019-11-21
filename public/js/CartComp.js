@@ -2,52 +2,53 @@ Vue.component('cart', {
     data(){
         return {
             imgCart: 'https://placehold.it/50x100',
-            cartUrl: '/api/cart',
             cartItems: [],
             showCart: false,
         }
     },
     methods: {
-        // addProduct(product){
-        //     this.$parent.getJson(`${API}/addToBasket.json`)
-        //         .then(data => {
-        //             if(data.result === 1){
-        //                 let find = this.cartItems.find(el => el.id_product === product.id_product);
-        //                 if(find){
-        //                     find.quantity++;
-        //                 } else {
-        //                     let prod = Object.assign({quantity: 1}, product);
-        //                     this.cartItems.push(prod)
-        //                 }
-        //             } else {
-        //                 alert('Error');
-        //             }
-        //         })
-        // },
-        addProduct(product){
-            // console.log(`${API + this.cartUrl}?id=${product.id_product}&quant=1`);
-            // console.log(`${API + this.cartUrl}?:id=${product.id_product}`);
-            // this.$parent.getJson(`${API + this.cartUrl}/add/${product.id_product}`);
-            console.log(product.id_product);
-            this.$parent.postJson(`${API + this.cartUrl}/`, product.id_product);
+        addProduct(product) {
+            const find = this.cartItems.find(el => el.id_product === product.id_product);
+
+            if (find) {
+                this.$parent.putJson(`/api/cart/${find.id_product}`, {quantity: 1})
+                    .then(data => {
+                        if (data.result === 1) {
+                            find.quantity++;
+                        }
+                    });
+            } else {
+                const prod = Object.assign({quantity: 1}, product);
+                this.$parent.postJson('/api/cart', prod)
+                    .then(data => {
+                        if (data.result === 1) {
+                            this.cartItems.push(prod);
+                        }
+                    });
+            }
         },
         remove(item) {
-            this.$parent.getJson(`${API}/deleteFromBasket.json`)
-                .then(data => {
-                    if(data.result === 1) {
-                        if(item.quantity>1){
+            if (item.quantity > 1) {
+                this.$parent.putJson(`/api/cart/${item.id_product}`, {quantity: -1})
+                    .then(data => {
+                        if (data.result === 1) {
                             item.quantity--;
-                        } else {
-                            this.cartItems.splice(this.cartItems.indexOf(item), 1)
                         }
-                    }
-                })
+                    });
+            } else {
+                this.$parent.deleteJson(`/api/cart/${item.id_product}`)
+                    .then(data => {
+                        if (data.result === 1) {
+                            this.cartItems.splice(this.cartItems.indexOf(item), 1);
+                        }
+                    });
+            }
         },
     },
     mounted(){
-        this.$parent.getJson(`${API + this.cartUrl}`)
+        this.$parent.getJson('/api/cart')
             .then(data => {
-                for(let el of data.contents){
+                for (let el of data.contents) {
                     this.cartItems.push(el);
                 }
             });

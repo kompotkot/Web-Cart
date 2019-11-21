@@ -1,5 +1,3 @@
-const API = 'http://localhost:3000';
-
 const app = new Vue({
     el: '#app',
     methods: {
@@ -10,25 +8,41 @@ const app = new Vue({
                     this.$refs.error.setError(error);
                 })
         },
-        postJson(url, payload){     // Добавляем метод для обработки post, put, del запросов
+        postJson(url, data) {
             return fetch(url, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json;charset=utf-8'
+                    "Content-Type": "application/json"
                 },
-                body: payload,
-            })
-                .then(result => {
-                    result.json();
-                    console.log(result);
-                })
+                body: JSON.stringify(data)
+            }).then(result => result.json())
                 .catch(error => {
                     this.$refs.error.setError(error);
-                })
+                });
+        },
+        putJson(url, data) {
+            return fetch(url, {
+                method: 'PUT',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            }).then(result => result.json())
+                .catch(error => {
+                    this.$refs.error.setError(error);
+                });
+        },
+        deleteJson(url) {
+            return fetch(url, {
+                method: 'DELETE',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            }).then(result => result.json())
+                .catch(error => {
+                    this.$refs.error.setError(error);
+                });
         },
     },
-    mounted() {
-        console.log(this);
-    }
 });
 
