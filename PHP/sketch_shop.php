@@ -7,9 +7,9 @@ class ProductList {
 }
 
 class ProductItem {	
-	public $id;
-	public $name;
-	public $price;
+	private $id;
+	private $name;
+	private $price;
 
 	function __construct($id,$name,$price) {
 		$this->id = $id;
@@ -19,7 +19,7 @@ class ProductItem {
 }
 
 class Cart extends ProductList {
-	public $cartList;
+	private $cartList;
 
 	function addProduct() {
 		echo 123;
@@ -35,7 +35,7 @@ class Cart extends ProductList {
 }
 
 class CartItem extends ProductItem {
-	public $quantity;
+	private $quantity;
 
 	function __construct($id,$name,$price,$quantity) {
 		parent::__construct($id,$name,$price);
