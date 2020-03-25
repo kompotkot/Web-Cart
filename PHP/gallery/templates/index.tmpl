@@ -1,0 +1,18 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Collage photo's</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div id='test'>
+		{% set foo = 1  %}	<!-- Логика переключения -->
+		
+		{% if foo == 1 %}
+			{% include 'grid.tmpl' %}
+		{% elseif foo == 2 %}
+			{% include 'single.tmpl' %}
+		{% endif %}
+	</div>
+</body>
+</html>
