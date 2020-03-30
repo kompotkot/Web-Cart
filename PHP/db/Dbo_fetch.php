@@ -1,9 +1,10 @@
 <?php
 
-class Test extends Dbo {
+# Extracting data from our databse
+class ExtractData extends Dbo {
 	
-	public function getData() {
-		$command = "SELECT * FROM goods LIMIT 5";
+	public function getData($start,$push) {
+		$command = "SELECT * FROM goods LIMIT $start,$push";
 		$result = $this->connect()->query($command);
 
 		while($row = $result->fetch()) {

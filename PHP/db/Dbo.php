@@ -6,7 +6,6 @@ class Dbo {
 	private $dbname = 'test_shop_1';
 	private $dbuser = 'root';
 	private $dbpass = '1234';
-	#private $charset;
 
 	protected function connect() {
 		try {
