@@ -1,1 +1,3 @@
-Добро пожаловать, <?=$username?>  '! Ваш логин - ' <?=$userlogin?> . '.';
+<?php
+	echo 'Welcome, ' . $username . '! Your login is ' . $userlogin . '.';
+?>

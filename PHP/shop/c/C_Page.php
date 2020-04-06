@@ -1,27 +1,56 @@
 <?php
+	include_once 'm/Product.php';
+	include_once 'm/Basket.php';
 
-include_once('m/M_Text.php');
-
-
-class C_Page extends C_Base {
-	
-	public function action_index(){
-		$this->title .= 'Page';
-		$text = text_get();
-		// $today = date();
-		$this->content = $this->Template('v/v_index.php', array('text' => $text));	
-	}
-    
-	public function action_edit(){
-		$this->title .= 'Edit text here';
+	class C_Page extends C_Base {
 		
-		if($this->isPost()) {
-			text_set($_POST['text']);
-			header('location: index.php');
-			exit();
+		public function action_index() {
+			
+			$this->title .= ' | Main';
+			$this->content = $this->Template('v/v_index.php', array());	
 		}
-		
-		$text = text_get();
-		$this->content = $this->Template('v/v_edit.php', array('text' => $text));	
+
+		public function action_catalog() {
+			
+			$product_object = new Product();
+			$catalog = $product_object->getAllProducts();
+
+			$this->title .= ' | Catalog';
+			$this->content = $this->Template('v/v_catalog.php', array('catalog' => $catalog));
+		}
+
+		public function action_product($id) {
+
+			$product_object = new Product();
+			$product = $product_object->getProduct($id);
+			if (isset($_SESSION['user_id'])) {
+				$user_id = $_SESSION['user_id'];
+			} else {
+				$user_id = false;
+			}
+
+			$this->title .= ' | ' . $product['title'];
+			$this->content = $this->Template('v/v_product.php', array('product' => $product, 'user_id' => $user_id));
+
+			if($this->isPost()) {
+				$new_basket = new Basket();
+				$result = $new_basket->addProduct($product['id'], $user_id, $_POST['count']);
+				$this->content = $this->Template('v/v_product.php', array('product' => $product, 'user_id' => $user_id, 'text' => $result));
+			}
+		}
+
+		public function action_basket() {
+			
+			if (isset($_SESSION['user_id'])) {
+				$user_id = $_SESSION['user_id'];
+			} else {
+				$user_id = false;
+			}
+
+			$basket_object = new Basket();
+			$basket = $basket_object->getBasket($user_id);
+
+			$this->title .= ' | Basket';
+			$this->content = $this->Template('v/v_basket.php', array('products' => $basket));
+		}
 	}
-}

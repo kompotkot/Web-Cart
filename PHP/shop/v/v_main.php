@@ -1,7 +1,3 @@
-<?php
-
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,18 +6,17 @@
 	<link rel="stylesheet" type="text/css" media="screen" href="v/style.css" /> 	
 </head>
 <body>
-	<div id="header">
-		<h1><?=$title?></h1>
-	</div>
-	
 	<div id="menu">
 		<a href="index.php">Main</a> | 
-		<a href="index.php?c=page&act=edit">Edit</a> | 
+		<a href="index.php?c=page&act=catalog">Catalog</a> | 
 		<?php
-			if ($user) {
-				echo '<a href="index.php?c=user&act=info">Личный кабинет</a> | <a href="index.php?c=user&act=logout">Выйти('. $user .')</a>';
+			if ($user['name']) {
+				echo '<a href="index.php?c=user&act=info"Profile</a> | <a href="index.php?c=page&act=basket">Моя корзина</a> | <a href="index.php?c=user&act=logout">Exit ('. $user['name'] .')</a>';
+				if ($user['role']) {
+					echo ' | <a href="index.php?c=admin&act=orders">Manage orders</a>';
+				}
 			} else {
-				echo '<a href="index.php?c=user&act=login">Войти</a> | <a href="index.php?c=user&act=reg">Регистрация</a>';
+				echo '<a href="index.php?c=user&act=login">Sign in</a> | <a href="index.php?c=user&act=reg">Sign up</a>';
 			}
 		?>
 	</div>
